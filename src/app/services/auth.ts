@@ -27,4 +27,8 @@ export class Auth {
     login(email: string, password: string): Observable<AuthResponse> {
       return this.http.post<AuthResponse>(`${this.BASE_URL}/auth/login`,{email, password})
     }
+
+    register(name: string, username: string, email: string, password: string, bio: string, skills: string[]): Observable<AuthResponse> {
+      return this.http.post<AuthResponse>(`${this.BASE_URL}/auth/register`,{name, username, email, password,bio, skills})
+    }
 }
