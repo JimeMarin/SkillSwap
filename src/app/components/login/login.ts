@@ -23,6 +23,7 @@ export class Login {
       this.authService.login(this.email, this.password).subscribe({
         next: (res) => {
           console.log(res);
+          this.authService.setToken(res.access_token);
           this.router.navigate(['/users/me']);
         }, 
         error: (err) => {
