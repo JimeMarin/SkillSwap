@@ -31,4 +31,16 @@ export class Auth {
     register(name: string, username: string, email: string, password: string, bio: string, skills: string[]): Observable<AuthResponse> {
       return this.http.post<AuthResponse>(`${this.BASE_URL}/auth/register`,{name, username, email, password,bio, skills})
     }
+
+    setToken(token: string) {
+      localStorage.setItem('token', token);
+    }
+
+    getToken(): string | null{
+      return localStorage.getItem('token');
+    }
+
+    getAuthHeaders() {
+      return { Authorization: `Bearer ${this.getToken()}` };
+    }
 }
