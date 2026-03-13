@@ -3,101 +3,117 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: #00030d;
-  background-image:
-    radial-gradient(ellipse at 20% 50%, rgba(47, 35, 29, 0.6) 0%, transparent 60%),
-    radial-gradient(ellipse at 80% 20%, rgba(225, 222, 222, 0.04) 0%, transparent 50%);
+  
+  background: conic-gradient(from 180deg at 50% 50%, #f0e6d3, #eae4db, #f0e6d3);
   font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
 }
 
 h2 {
-  font-size: 2.2rem;
+  font-size: 1.6rem;
   font-weight: 700;
-  color: #e1dede;
-  letter-spacing: 0.08em;
+  color: #1c1008;
+  letter-spacing: 0.14em;
   margin: 2rem;
   text-align: center;
+  text-transform: uppercase;
 
   &::after {
     content: '';
     display: block;
-    width: 40px;
+    width: 30px;
     height: 2px;
-    background: linear-gradient(90deg, #2f231d, #e1dede);
+    background: #0d1b2a;
     margin: 0.6rem auto 0;
     border-radius: 2px;
   }
 }
 
+p {
+  font-size: 0.82rem;
+  color: #1c1008;
+  opacity: 0.45;
+  text-align: center;
+  margin-top: 0.2rem;
+  letter-spacing: 0.03em;
+
+  a {
+    color: #0d1b2a;
+    opacity: 1;
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(13, 27, 42, 0.3);
+    transition: border-color 0.2s ease, opacity 0.2s ease;
+
+    &:hover {
+      border-color: #0d1b2a;
+      opacity: 0.7;
+    }
+  }
+}
+
 form {
-  background: rgba(47, 35, 29, 0.25);
-  border: 1px solid rgba(225, 222, 222, 0.1);
-  backdrop-filter: blur(20px);
-  border-radius: 20px;
+  background: #ffffff;
+  border-radius: 16px;
   padding: 2.5rem 2.8rem;
   width: 100%;
-  max-width: 440px;
+  max-width: 420px;
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
-  box-shadow:
-    0 25px 60px rgba(0, 3, 13, 0.7),
-    inset 0 1px 0 rgba(225, 222, 222, 0.07);
-  animation: fadeUp 0.6s ease both;
+  box-shadow: 0 4px 30px rgba(28, 16, 8, 0.08);
+  animation: fadeUp 0.5s ease both;
 }
 
 label {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 600;
-  color: rgba(225, 222, 222, 0.45);
-  letter-spacing: 0.1em;
+  color: #1c1008;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
+  opacity: 0.5;
 }
 
 input {
-  background: rgba(225, 222, 222, 0.05);
-  border: 1px solid rgba(225, 222, 222, 0.1);
-  border-radius: 10px;
+  background: #f0e6d3;
+  border: none;
+  border-radius: 8px;
   padding: 0.75rem 1rem;
-  color: #e1dede;
+  color: #1c1008;
   font-family: inherit;
   font-size: 0.95rem;
-  font-weight: 300;
   outline: none;
-  transition: border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+  transition: box-shadow 0.2s ease, background 0.2s ease;
 
   &::placeholder {
-    color: rgba(225, 222, 222, 0.2);
+    color: rgba(28, 16, 8, 0.25);
   }
 
   &:focus {
-    border-color: rgba(225, 222, 222, 0.5);
-    background: rgba(47, 35, 29, 0.3);
-    box-shadow: 0 0 0 3px rgba(47, 35, 29, 0.25);
+    background: #e8dcc8;
+    box-shadow: 0 0 0 2px #0d1b2a;
   }
 }
 
 button[type='submit'] {
   margin-top: 0.8rem;
-  padding: 0.85rem;
+  padding: 0.9rem;
   border: none;
-  border-radius: 10px;
-  background: linear-gradient(135deg, #2f231d, #4a3830);
-  color: #e1dede;
+  border-radius: 8px;
+  background: #0d1b2a;
+  color: #f0e6d3;
   font-family: inherit;
-  font-size: 0.9rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   cursor: pointer;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-  border: 1px solid rgba(225, 222, 222, 0.15);
+  transition: background 0.2s ease, transform 0.2s ease;
 
   &:hover {
-    opacity: 0.85;
+    background: #1c1008;
     transform: translateY(-1px);
   }
 
@@ -108,18 +124,18 @@ button[type='submit'] {
 
 .error-message {
   font-size: 0.82rem;
-  color: #e1dede;
-  background: rgba(47, 35, 29, 0.4);
-  border: 1px solid rgba(225, 222, 222, 0.15);
-  border-radius: 8px;
+  color: #0d1b2a;
+  background: rgba(13, 27, 42, 0.07);
+  border-left: 3px solid #0d1b2a;
+  border-radius: 4px;
   padding: 0.6rem 0.9rem;
-  text-align: center;
+  text-align: left;
 }
 
 @keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(16px);
   }
   to {
     opacity: 1;
