@@ -1,0 +1,57 @@
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Proposal, ProposalService } from '../../services/proposal.service';
+
+@Component({
+  selector: 'app-proposal-details',
+  imports: [CommonModule],
+  templateUrl: './proposal-details.html',
+  styleUrl: './proposal-details.scss',
+})
+export class ProposalDetailsComponent {
+  proposalId = '';
+  proposal: Proposal | null = null;
+  errorMessage = '';
+
+  constructor(
+    private readonly route: ActivatedRoute,
+    private readonly router: Router,
+    private readonly proposalService: ProposalService
+  ) {
+    const id = this.route.snapshot.paramMap.get('id') ?? '';
+    this.proposalId = id;
+
+    this.loadProposal();
+  }
+
+  loadProposal() {
+    this.proposalService.getProposalById(this.proposalId).subscribe({
+      next: (res) => {
+        this.proposal = res;
+      },
+      error: () => {
+        this.errorMessage = 'Proposal not found.';
+        setTimeout(() => {
+          this.router.navigate(['/']);
+        }, 1500);
+      }
+    });
+  }
+
+  accept() {
+    if (!confirm('Do you want to accept this proposal?')) {
+      return;
+    }
+
+    this.proposalService.acceptProposal(this.proposalId).subscribe({
+      next: () => {
+        alert('Proposal accepted!');
+        this.loadProposal();
+      },
+      error: (err) => {
+        alert(err.error?.error || 'Error accepting proposal.');
+      }
+    });
+  }
+}
