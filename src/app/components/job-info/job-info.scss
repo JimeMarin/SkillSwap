@@ -1,0 +1,213 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background: conic-gradient(from 180deg at 50% 50%, #f0e6d3, #eae4db, #f0e6d3);
+  font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  padding: 2.5rem;
+}
+
+.btn-back {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #1c1008;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  opacity: 0.5;
+  margin-bottom: 1.5rem;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.job-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 2.5rem;
+  max-width: 680px;
+  margin: 0 auto;
+  box-shadow: 0 4px 30px rgba(28, 16, 8, 0.08);
+  animation: fadeUp 0.5s ease both;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  .job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #1c1008;
+      margin-bottom: 0.3rem;
+    }
+
+    .job-category {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: rgba(28, 16, 8, 0.4);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+  }
+
+  .job-status {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.7rem;
+    border-radius: 20px;
+
+    &.open {
+      background: rgba(13, 27, 42, 0.08);
+      color: #0d1b2a;
+    }
+
+    &.in_progress {
+      background: rgba(28, 16, 8, 0.08);
+      color: #1c1008;
+    }
+
+    &.completed {
+      background: rgba(28, 16, 8, 0.05);
+      color: rgba(28, 16, 8, 0.4);
+    }
+  }
+
+  .job-description {
+    font-size: 0.95rem;
+    color: rgba(28, 16, 8, 0.6);
+    line-height: 1.6;
+  }
+
+  .job-budget {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.2rem;
+    background: #f0e6d3;
+    border-radius: 8px;
+
+    .label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: rgba(28, 16, 8, 0.4);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .value {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #0d1b2a;
+    }
+  }
+
+  .job-people {
+    display: flex;
+    gap: 1rem;
+
+    .person-card {
+      flex: 1;
+      background: #f0e6d3;
+      border-radius: 8px;
+      padding: 1rem 1.2rem;
+
+      .label {
+        font-size: 0.68rem;
+        font-weight: 600;
+        color: rgba(28, 16, 8, 0.4);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .name {
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: #1c1008;
+        margin-top: 0.4rem;
+      }
+
+      .username {
+        font-size: 0.82rem;
+        color: rgba(28, 16, 8, 0.5);
+      }
+
+      .rating {
+        font-size: 0.82rem;
+        color: #0d1b2a;
+        margin-top: 0.3rem;
+        font-weight: 600;
+      }
+    }
+  }
+
+  .job-actions {
+  display: flex;
+  gap: 0.8rem;
+  justify-content: flex-end;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(28, 16, 8, 0.06);
+
+  .btn-edit, .btn-complete {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: background 0.2s ease, transform 0.2s ease;
+
+    &:hover {
+      transform: translateY(-1px);
+    }
+  }
+
+  .btn-edit {
+    background: rgba(13, 27, 42, 0.07);
+    color: #0d1b2a;
+
+    &:hover {
+      background: rgba(13, 27, 42, 0.12);
+    }
+  }
+
+  .btn-complete {
+    background: #0d1b2a;
+    color: #f0e6d3;
+
+    &:hover {
+      background: #1c1008;
+    }
+  }
+}
+}
+
+.error-message {
+  font-size: 0.82rem;
+  color: #0d1b2a;
+  background: rgba(13, 27, 42, 0.07);
+  border-left: 3px solid #0d1b2a;
+  border-radius: 4px;
+  padding: 0.6rem 0.9rem;
+  max-width: 680px;
+  margin: 0 auto 1rem;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

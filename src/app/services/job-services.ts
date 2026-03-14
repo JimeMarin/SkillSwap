@@ -4,21 +4,21 @@ import { Observable } from 'rxjs';
 import { Auth } from './auth';
 
 export interface jobFilters {
-  category: string;
-  status: string;
-  min_budget: number;
-  
+  category?: string;
+  status?: string;
+  min_budget?: number | null;
+
 }
 export interface Job {
-      id: string;
-      title: string;
-      description: string;
-      budget: number;
-      category: string;
-      status: 'open' | 'in_progress' | 'completed';
-      freelancer_id?: string;
-      owner_id: string;
-    }
+  id: string;
+  title: string;
+  description: string;
+  budget: number;
+  category: string;
+  status: 'open' | 'in_progress' | 'completed';
+  freelancer_id?: string | null;
+  owner_id: string;
+}
 
 export interface JobCreateResponse {
   job_id: string;
@@ -67,11 +67,12 @@ export class JobServices {
   constructor(
     private readonly http: HttpClient,
     private readonly authservice: Auth
-  ) {}
+  ) { }
+
 
   searchJobs(filters: jobFilters): Observable<Job[]> {
-      return this.http.post<Job[]>(`${this.BASE_URL}/jobs/search`, filters)
-    }
+    return this.http.post<Job[]>(`${this.BASE_URL}/jobs/search`, filters)
+  }
 
   postJobs(title: string, description: string, budget: number, category: string): Observable<JobCreateResponse> {
     return this.http.post<JobCreateResponse>(`${this.BASE_URL}/jobs`,
@@ -83,27 +84,27 @@ export class JobServices {
 
   getJobById(id: string): Observable<JobDetails> {
     return this.http.get<JobDetails>(`${this.BASE_URL}/jobs/${id}`,
-      {headers: new HttpHeaders(this.authservice.getAuthHeaders())}
+      { headers: new HttpHeaders(this.authservice.getAuthHeaders()) }
     )
   }
 
   updateJob(id: string, title?: string, description?: string, budget?: number, category?: string, status?: 'open' | 'in_progress' | 'completed'): Observable<JobUpdateResponse> {
     return this.http.patch<JobUpdateResponse>(`${this.BASE_URL}/jobs/${id}`,
-      {title, description, budget, category, status},
-      {headers: new HttpHeaders(this.authservice.getAuthHeaders())}
+      { title, description, budget, category, status },
+      { headers: new HttpHeaders(this.authservice.getAuthHeaders()) }
     )
   }
 
   getMyPosting(): Observable<Job[]> {
-    return this.http.get<Job[]>(`${this.BASE_URL}/jobs/my-postings`, 
-      {headers: new HttpHeaders(this.authservice.getAuthHeaders())}
+    return this.http.get<Job[]>(`${this.BASE_URL}/jobs/my-postings`,
+      { headers: new HttpHeaders(this.authservice.getAuthHeaders()) }
     )
   }
 
-  completeJob(id: string, ): Observable<JobCompleteResponse> {
+  completeJob(id: string,): Observable<JobCompleteResponse> {
     return this.http.patch<JobCompleteResponse>(`${this.BASE_URL}/jobs/${id}/complete`,
       {},
-      {headers: new HttpHeaders(this.authservice.getAuthHeaders())}
+      { headers: new HttpHeaders(this.authservice.getAuthHeaders()) }
     )
   }
 }

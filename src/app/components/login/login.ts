@@ -24,7 +24,7 @@ export class Login {
         next: (res) => {
           console.log(res);
           this.authService.setToken(res.token);
-          //this.router.navigate(['/user', res.user.username]);
+          this.authService.setUserId(res.user.id);
           this.router.navigate(['/users/me']); 
         }, 
         error: (err) => {

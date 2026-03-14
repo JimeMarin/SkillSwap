@@ -1,1 +1,44 @@
-<p>job-update works!</p>
+<div class="update-container">
+  <div class="header">
+    <h2>Edit Job</h2>
+  </div>
+
+  <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+
+  <form (ngSubmit)="submit()">
+    <label>
+      Title
+      <input [(ngModel)]="form.title" name="title" type="text"/>
+    </label>
+
+    <label>
+      Description
+      <textarea [(ngModel)]="form.description" name="description"></textarea>
+    </label>
+
+    <label>
+      Budget
+      <input [(ngModel)]="form.budget" name="budget" type="number"/>
+    </label>
+
+    <label>
+      Category
+      <input [(ngModel)]="form.category" name="category" type="text"/>
+    </label>
+
+    <label>
+      Status
+      <select [(ngModel)]="form.status" name="status">
+        <option value="open">Open</option>
+        <option value="in_progress">In Progress</option>
+        <option value="completed">Completed</option>
+      </select>
+    </label>
+
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+    <button type="submit" [disabled]="submitting">
+      {{ submitting ? 'Updating...' : 'Update Job' }}
+    </button>
+  </form>
+</div>

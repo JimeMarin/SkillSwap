@@ -12,7 +12,7 @@ import { filter } from 'rxjs';
   styleUrl: './navbar.scss',
 })
 export class Navbar {
-  isLoggedIn = true;
+  isLoggedIn = false;
 
   constructor(
     private readonly authService: Auth, 

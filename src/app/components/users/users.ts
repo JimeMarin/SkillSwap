@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsersService, UserProfile } from '../../services/users';
@@ -17,6 +17,7 @@ export class Users {
 
   constructor(
     private readonly usersService: UsersService,
+    private readonly cdr: ChangeDetectorRef
     //private readonly route: ActivatedRoute,
     //private readonly router: Router
   ) {
@@ -29,9 +30,11 @@ export class Users {
     this.usersService.getMe().subscribe({
       next: (res) => {
         this.user = res;
+        this.cdr.detectChanges();
       },
       error: (err) => {
         console.log(err);
+        this.cdr.detectChanges();
         this.errorMessage = 'Unable to load user profile';
       }
     });

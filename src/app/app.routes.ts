@@ -8,16 +8,18 @@ import { JobSearch } from './components/job-search/job-search';
 import { JobUpdate } from './components/job-update/job-update';
 import { JobPostings } from './components/job-postings/job-postings';
 import { JobComplete } from './components/job-complete/job-complete';
+import { authGuard } from './guards/auth.guards';
+import { guestGuard } from './guards/guest.guard';
 
 
 export const routes: Routes = [
-    {path: 'register', component: Register},
-    {path: 'login', component: Login},
-    {path: 'users/me', component: Users},
+    {path: 'register', component: Register, canActivate: [guestGuard]},
+    {path: 'login', component: Login, canActivate: [guestGuard]},
+    {path: 'users/me', component: Users, canActivate: [authGuard]},
     {path: 'jobs/search', component: JobSearch},
-    {path: 'job/new', component: JobCreate},
-    {path: 'jobs/:id', component: JobInfo},
-    {path: 'jobs/:id', component: JobUpdate},
-    {path: 'jobs/postings', component: JobPostings},
-    {path: 'jobs/complete', component: JobComplete}
+    {path: 'job/new', component: JobCreate, canActivate: [authGuard]},
+    {path: 'jobs/postings', component: JobPostings, canActivate: [authGuard]},
+    {path: 'jobs/:id', component: JobInfo, canActivate: [authGuard]},
+    {path: 'jobs/:id/update', component: JobUpdate, canActivate: [authGuard]},
+    {path: 'jobs/:id/complete', component: JobComplete, canActivate: [authGuard]}        
 ];

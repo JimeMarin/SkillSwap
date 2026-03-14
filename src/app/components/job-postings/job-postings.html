@@ -1,1 +1,27 @@
-<p>job-postings works!</p>
+<div class="postings-container">
+  <h2>My Postings</h2>
+
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+  <div class="jobs-list">
+    <div *ngFor="let job of jobs" class="job-card">
+      <a [routerLink]="['/jobs', job.id]" class="job-card-link">
+        <div class="job-header">
+          <h3>{{ job.title }}</h3>
+          <span class="job-status" [ngClass]="job.status">{{ job.status }}</span>
+        </div>
+        <p class="job-description">{{ job.description }}</p>
+        <div class="job-footer">
+          <span class="job-category">{{ job.category }}</span>
+          <span class="job-budget">${{ job.budget }}</span>
+        </div>
+      </a>
+
+      <div class="job-actions">
+        <a [routerLink]="['/jobs', job.id, 'update']" class="btn-edit">Edit</a>
+        <button *ngIf="job.status === 'in_progress'" (click)="goToComplete(job.id)" class="btn-complete">Complete</button>
+      </div>
+    </div>
+
+    <p *ngIf="jobs.length === 0" class="no-results">You have no job postings yet.</p>
+</div>
