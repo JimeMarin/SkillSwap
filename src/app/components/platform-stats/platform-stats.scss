@@ -1,0 +1,25 @@
+.stats-container {
+  max-width: 500px;
+  margin: 20px auto;
+
+  h2 {
+    margin-bottom: 15px;
+    font-size: 22px;
+  }
+
+  .error {
+    color: #b00020;
+    margin-bottom: 10px;
+  }
+
+  .stats-card {
+    border: 1px solid #ddd;
+    background: #fafafa;
+    padding: 15px;
+    border-radius: 6px;
+
+    p {
+      margin: 6px 0;
+    }
+  }
+}

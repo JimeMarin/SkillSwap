@@ -17,6 +17,7 @@ import { ProposalMyBidsComponent } from './components/proposal-my-bids/proposal-
 import { ReviewSend } from './components/review-send/review-send';
 import { ReviewList } from './components/review-list/review-list';
 
+import { PlatformStatsComponent } from './components/platform-stats/platform-stats';
 
 
 export const routes: Routes = [
@@ -36,7 +37,8 @@ export const routes: Routes = [
     { path: 'proposals/:id', component: ProposalDetailsComponent },
 
     { path: 'jobs/:job_id/review/:target_id', component: ReviewSend },
-    { path: 'reviews/user/:user_id', component: ReviewList }
+    { path: 'reviews/user/:user_id', component: ReviewList },
 
+    { path: 'platform/stats', component: PlatformStatsComponent }
 
 ];
