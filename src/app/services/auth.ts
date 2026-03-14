@@ -34,10 +34,6 @@ export class Auth {
       return this.http.post<AuthResponse>(`${this.BASE_URL}/auth/register`,{name, username, email, password,bio, skills})
     }
 
-    getMe(): Observable<User> {
-      return this.http.get<User>(`${this.BASE_URL}/users/me`,{headers: this.getAuthHeaders()})
-    }
-
     setToken(token: string) {
       localStorage.setItem('token', token);
     }
