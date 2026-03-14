@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PlatformService, PlatformStats } from '../../services/platform.service';
 
@@ -12,7 +12,10 @@ export class PlatformStatsComponent {
   stats: PlatformStats | null = null;
   errorMessage = '';
 
-  constructor(private readonly platformService: PlatformService) {
+  constructor(
+    private readonly platformService: PlatformService,
+    private readonly cdr: ChangeDetectorRef
+  ) {
     this.loadStats();
   }
 
@@ -20,8 +23,10 @@ export class PlatformStatsComponent {
     this.platformService.getStats().subscribe({
       next: (res) => {
         this.stats = res;
+        this.cdr.detectChanges();
       },
       error: () => {
+        this.cdr.detectChanges();
         this.errorMessage = 'Error loading platform statistics.';
       }
     });

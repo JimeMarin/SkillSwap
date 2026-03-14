@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Proposal, ProposalService } from '../../services/proposal.service'; 
 
@@ -13,7 +13,8 @@ export class ProposalMyBidsComponent {
   errorMessage = '';
 
   constructor(
-    private readonly proposalService: ProposalService
+    private readonly proposalService: ProposalService,
+    private readonly cdr: ChangeDetectorRef
   ) {
     this.loadMyProposals();
   }
@@ -22,9 +23,11 @@ export class ProposalMyBidsComponent {
     this.proposalService.getMyBids().subscribe({
       next: (res) => {
         this.proposals = res;
+        this.cdr.detectChanges();
       },
       error: (err) => {
         this.errorMessage = err.error?.error || 'Error loading your proposals.';
+        this.cdr.detectChanges();
       }
     });
   }
