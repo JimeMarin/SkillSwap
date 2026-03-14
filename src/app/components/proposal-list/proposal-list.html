@@ -1,0 +1,25 @@
+<p>proposal-list works!</p>
+
+<div class="proposal-list-container">
+
+  <h3>Proposals</h3>
+
+  <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+  <div *ngFor="let p of proposals" class="proposal-card">
+
+    <p><strong>Price:</strong> ${{ p.price }}</p>
+
+    <p><strong>Cover Letter:</strong></p>
+    <p>{{ p.cover_letter }}</p>
+
+    <p><strong>Message:</strong></p>
+    <p>{{ p.message }}</p>
+
+    <p><strong>Freelancer ID:</strong> {{ p.freelancer_id }}</p>
+
+    <button (click)="acceptProposal(p.id)">Accept Proposal</button>
+
+  </div>
+
+</div>

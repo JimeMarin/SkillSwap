@@ -1,0 +1,31 @@
+<p>proposal-details works!</p>
+
+<div class="proposal-details-container">
+
+  <h3>Proposal Details</h3>
+
+  <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+  <div *ngIf="proposal" class="proposal-card">
+
+    <p><strong>ID:</strong> {{ proposal.id }}</p>
+
+    <p><strong>Job ID:</strong> {{ proposal.job_id }}</p>
+
+    <p><strong>Freelancer ID:</strong> {{ proposal.freelancer_id }}</p>
+
+    <p><strong>Price:</strong> ${{ proposal.price }}</p>
+
+    <p><strong>Cover Letter:</strong></p>
+    <p>{{ proposal.cover_letter }}</p>
+
+    <p><strong>Message:</strong></p>
+    <p>{{ proposal.message }}</p>
+
+    <p><strong>Status:</strong> {{ proposal.status }}</p>
+
+    <button (click)="accept()">Accept Proposal</button>
+
+  </div>
+
+</div>
