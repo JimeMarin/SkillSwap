@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { Auth } from '../../services/auth';
+import { filter } from 'rxjs';
 
 
 @Component({
@@ -13,11 +14,21 @@ import { Auth } from '../../services/auth';
 export class Navbar {
   isLoggedIn = true;
 
-  constructor(private readonly authService: Auth) {
-    this.isLoggedIn = !!this.authService.getToken();
+  constructor(
+    private readonly authService: Auth, 
+    private readonly router: Router) 
+    {
+    this.updateAuthState();
+    this.router.events
+    .pipe(filter(e => e instanceof NavigationEnd))
+    .subscribe(() => this.updateAuthState());
   }
 
-  logout(){
-    //this.isLoggedIn = !this.isLoggedIn;
+  updateAuthState() {
+    this.isLoggedIn = !!this.authService.getToken();
+  }
+  logout() {
+  this.authService.clearToken();
+  this.router.navigate(['/login']);
   }
 }

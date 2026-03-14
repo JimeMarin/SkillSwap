@@ -34,7 +34,7 @@ export class JobServices {
     }
 
     postJobs(title: string, description: string, budget: number, category: string): Observable<Job> {
-      return this.http.post<Job>(`${this.BASE_URL}/jobs/search`,
+      return this.http.post<Job>(`${this.BASE_URL}/jobs`,
         {title, description, budget, category},
         {headers: new HttpHeaders(this.authservice.getAuthHeaders())})
 

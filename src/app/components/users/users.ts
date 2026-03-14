@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UsersService, UserProfile } from '../../services/users';
 
 
+
 @Component({
   selector: 'app-users',
   imports: [CommonModule],
@@ -22,6 +23,8 @@ export class Users {
     this.loadUser();
   }
 
+    
+    
     loadUser() {
     this.usersService.getMe().subscribe({
       next: (res) => {
