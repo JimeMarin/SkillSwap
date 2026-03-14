@@ -15,6 +15,7 @@ export class ProposalList {
   proposals: Proposal[] = [];
   errorMessage = '';
 
+
   constructor(
     private readonly proposalService: ProposalService
   ) {

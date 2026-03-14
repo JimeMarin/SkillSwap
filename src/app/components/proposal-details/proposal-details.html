@@ -1,31 +1,31 @@
-<p>proposal-details works!</p>
+<div class="details-container">
+  <a routerLink="/proposals/my-bids" class="btn-back">← Back</a>
 
-<div class="proposal-details-container">
-
-  <h3>Proposal Details</h3>
-
-  <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
 
   <div *ngIf="proposal" class="proposal-card">
+    <div class="proposal-header">
+      <h2>Proposal Details</h2>
+      <span class="proposal-status" [ngClass]="proposal.status">{{ proposal.status }}</span>
+    </div>
 
-    <p><strong>ID:</strong> {{ proposal.id }}</p>
+    <div class="proposal-price">
+      <span class="label">Price</span>
+      <span class="value">${{ proposal.price }}</span>
+    </div>
 
-    <p><strong>Job ID:</strong> {{ proposal.job_id }}</p>
+    <div *ngIf="proposal.cover_letter" class="proposal-section">
+      <span class="label">Cover Letter</span>
+      <p class="content">{{ proposal.cover_letter }}</p>
+    </div>
 
-    <p><strong>Freelancer ID:</strong> {{ proposal.freelancer_id }}</p>
+    <div *ngIf="proposal.message" class="proposal-section">
+      <span class="label">Message</span>
+      <p class="content">{{ proposal.message }}</p>
+    </div>
 
-    <p><strong>Price:</strong> ${{ proposal.price }}</p>
-
-    <p><strong>Cover Letter:</strong></p>
-    <p>{{ proposal.cover_letter }}</p>
-
-    <p><strong>Message:</strong></p>
-    <p>{{ proposal.message }}</p>
-
-    <p><strong>Status:</strong> {{ proposal.status }}</p>
-
-    <button (click)="accept()">Accept Proposal</button>
-
+    <div class="proposal-actions" *ngIf="proposal.status === 'pending'">
+      <button (click)="accept()" class="btn-accept">Accept Proposal</button>
+    </div>
   </div>
-
 </div>

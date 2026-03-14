@@ -1,57 +1,131 @@
-.review-container {
-  max-width: 500px;
-  margin: 20px auto;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  background: #fafafa;
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: conic-gradient(from 180deg at 50% 50%, #f0e6d3, #eae4db, #f0e6d3);
+  font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  padding: 2.5rem;
+}
+
+.review-send-container {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 2.5rem 2.8rem;
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  box-shadow: 0 4px 30px rgba(28, 16, 8, 0.08);
+  animation: fadeUp 0.5s ease both;
 
   h2 {
-    margin-bottom: 15px;
-    font-size: 20px;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #1c1008;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    text-align: center;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 30px;
+      height: 2px;
+      background: #0d1b2a;
+      margin: 0.6rem auto 0;
+      border-radius: 2px;
+    }
   }
 
   label {
-    display: block;
-    margin-top: 12px;
+    font-size: 0.72rem;
     font-weight: 600;
+    color: #1c1008;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.5;
   }
 
-  input,
-  textarea {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+  input, textarea {
+    background: #f0e6d3;
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    color: #1c1008;
+    font-family: inherit;
+    font-size: 0.95rem;
+    outline: none;
+    transition: box-shadow 0.2s ease, background 0.2s ease;
+
+    &::placeholder {
+      color: rgba(28, 16, 8, 0.25);
+    }
+
+    &:focus {
+      background: #e8dcc8;
+      box-shadow: 0 0 0 2px #0d1b2a;
+    }
   }
 
   textarea {
-    min-height: 80px;
     resize: vertical;
+    min-height: 100px;
   }
 
   button {
-    margin-top: 15px;
-    padding: 10px 15px;
-    background: #007bff;
+    margin-top: 0.5rem;
+    padding: 0.9rem;
     border: none;
-    color: white;
-    border-radius: 4px;
+    border-radius: 8px;
+    background: #0d1b2a;
+    color: #f0e6d3;
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
     cursor: pointer;
-  }
+    transition: background 0.2s ease, transform 0.2s ease;
 
-  button:hover {
-    background: #0056b3;
-  }
+    &:hover {
+      background: #1c1008;
+      transform: translateY(-1px);
+    }
 
-  .error {
-    color: #b00020;
-    margin-bottom: 10px;
+    &:active {
+      transform: translateY(0);
+    }
   }
+}
 
-  .success {
-    color: #0a7d00;
-    margin-bottom: 10px;
+.error-message {
+  font-size: 0.82rem;
+  color: #0d1b2a;
+  background: rgba(13, 27, 42, 0.07);
+  border-left: 3px solid #0d1b2a;
+  border-radius: 4px;
+  padding: 0.6rem 0.9rem;
+}
+
+.success-message {
+  font-size: 0.82rem;
+  color: #1c1008;
+  background: rgba(28, 16, 8, 0.07);
+  border-left: 3px solid #1c1008;
+  border-radius: 4px;
+  padding: 0.6rem 0.9rem;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

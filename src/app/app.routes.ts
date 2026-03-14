@@ -26,15 +26,20 @@ export const routes: Routes = [
     {path: 'register', component: Register, canActivate: [guestGuard]},
     {path: 'login', component: Login, canActivate: [guestGuard]},
     {path: 'users/me', component: Users, canActivate: [authGuard]},
+
     {path: 'jobs/search', component: JobSearch},
     {path: 'job/new', component: JobCreate, canActivate: [authGuard]},
     {path: 'jobs/postings', component: JobPostings, canActivate: [authGuard]},
-    {path: 'jobs/:id', component: JobInfo, canActivate: [authGuard]},
     {path: 'jobs/:id/update', component: JobUpdate, canActivate: [authGuard]},
-    {path: 'jobs/:id/complete', component: JobComplete, canActivate: [authGuard]},        
+    {path: 'jobs/:id/complete', component: JobComplete, canActivate: [authGuard]},
+    {path: 'jobs/:id', component: JobInfo, canActivate: [authGuard]},
+            
     { path: 'proposals/my-bids', component: ProposalMyBidsComponent, canActivate: [authGuard]},
     { path: 'proposals/:id', component: ProposalDetailsComponent, canActivate: [authGuard]},
+
     { path: 'jobs/:job_id/review/:target_id', component: ReviewSend, canActivate: [authGuard]},
     { path: 'reviews/user/:user_id', component: ReviewList, canActivate: [authGuard]},
+
     { path: 'platform/stats', component: PlatformStatsComponent, canActivate: [authGuard]}
+
 ];

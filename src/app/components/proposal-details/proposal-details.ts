@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Proposal, ProposalService } from '../../services/proposal.service';
 
 @Component({
   selector: 'app-proposal-details',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './proposal-details.html',
   styleUrl: './proposal-details.scss',
 })

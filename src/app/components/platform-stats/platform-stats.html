@@ -1,15 +1,22 @@
-<p>platform-stats works!</p>
-
 <div class="stats-container">
+  <h2>Platform Stats</h2>
 
-  <h2>Platform Statistics</h2>
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
 
-  <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+  <div *ngIf="stats" class="stats-grid">
+    <div class="stat-card">
+      <span class="stat-label">Total Users</span>
+      <span class="stat-value">{{ stats.total_users }}</span>
+    </div>
 
-  <div *ngIf="stats" class="stats-card">
-    <p><strong>Total Users:</strong> {{ stats.total_users }}</p>
-    <p><strong>Active Jobs:</strong> {{ stats.active_jobs }}</p>
-    <p><strong>Total Value Moved:</strong> ${{ stats.total_value_moved }}</p>
+    <div class="stat-card">
+      <span class="stat-label">Active Jobs</span>
+      <span class="stat-value">{{ stats.active_jobs }}</span>
+    </div>
+
+    <div class="stat-card">
+      <span class="stat-label">Total Value Moved</span>
+      <span class="stat-value">${{ stats.total_value_moved }}</span>
+    </div>
   </div>
-
 </div>

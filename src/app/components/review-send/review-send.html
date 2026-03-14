@@ -1,27 +1,14 @@
-<p>review-send works!</p>
+<div class="review-send-container">
+  <h2>Leave a Review</h2>
 
-<div class="review-container">
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+  <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
 
-  <h2>Submit Review</h2>
-
-  <!-- Mensagens -->
-  <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
-  <p class="success" *ngIf="successMessage">{{ successMessage }}</p>
-
-  <!-- Rating -->
   <label>Rating (1 to 5)</label>
-  <input 
-    type="number" 
-    [(ngModel)]="rating" 
-    min="1" 
-    max="5"
-  />
+  <input type="number" [(ngModel)]="rating" name="rating" min="1" max="5"/>
 
-  <!-- Comment -->
   <label>Comment</label>
-  <textarea [(ngModel)]="comment"></textarea>
+  <textarea [(ngModel)]="comment" name="comment" placeholder="Share your experience..."></textarea>
 
-  <!-- Submit -->
   <button (click)="send()">Submit Review</button>
-
 </div>

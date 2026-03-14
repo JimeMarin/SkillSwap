@@ -1,32 +1,29 @@
-<p>review-list works!</p>
-
-<div class="review-list-container">
-
+<div class="reviews-container">
   <h2>User Reviews</h2>
 
-  <!-- Mensagem de erro -->
-  <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
 
-  <!-- Lista de reviews -->
-  <div *ngFor="let r of reviews" class="review-card">
+  <div class="reviews-list">
+    <div *ngFor="let r of reviews" class="review-card">
+      <div class="review-header">
+        <div class="review-stars">
+          <span *ngFor="let star of [1,2,3,4,5]">
+            {{ star <= r.rating ? '⭐' : '☆' }}
+          </span>
+        </div>
+        <span class="review-rating">{{ r.rating }}/5</span>
+      </div>
 
-    <p><strong>Rating:</strong> {{ r.rating }}</p>
+      <p *ngIf="r.comment" class="review-comment">{{ r.comment }}</p>
 
-    <p *ngIf="r.comment">
-      <strong>Comment:</strong> {{ r.comment }}
+      <div class="review-footer">
+        <span class="review-meta">Job: {{ r.job_id }}</span>
+        <span class="review-meta">By: {{ r.reviewer_id }}</span>
+      </div>
+    </div>
+
+    <p *ngIf="reviews.length === 0 && !errorMessage" class="no-results">
+      No reviews found for this user.
     </p>
-
-    <p><strong>Reviewer:</strong> {{ r.reviewer_id }}</p>
-
-    <p><strong>Job:</strong> {{ r.job_id }}</p>
-
-    <hr />
-
   </div>
-
-  <!-- Caso não tenha reviews -->
-  <p *ngIf="reviews.length === 0 && !errorMessage">
-    No reviews found for this user.
-  </p>
-
 </div>

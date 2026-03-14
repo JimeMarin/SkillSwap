@@ -1,25 +1,23 @@
-<p>proposal-list works!</p>
-
-<div class="proposal-list-container">
-
+<div class="proposals-container">
   <h3>Proposals</h3>
 
-  <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
 
-  <div *ngFor="let p of proposals" class="proposal-card">
+  <div class="proposals-list">
+    <div *ngFor="let proposal of proposals" class="proposal-card">
+      <div class="proposal-header">
+        <span class="proposal-status" [ngClass]="proposal.status">{{ proposal.status }}</span>
+        <span class="proposal-price">${{ proposal.price }}</span>
+      </div>
 
-    <p><strong>Price:</strong> ${{ p.price }}</p>
+      <p *ngIf="proposal.cover_letter" class="proposal-content">{{ proposal.cover_letter }}</p>
+      <p *ngIf="proposal.message" class="proposal-content">{{ proposal.message }}</p>
 
-    <p><strong>Cover Letter:</strong></p>
-    <p>{{ p.cover_letter }}</p>
+      <div class="proposal-actions" *ngIf="proposal.status === 'pending'">
+        <button (click)="acceptProposal(proposal.id)" class="btn-accept">Accept</button>
+      </div>
+    </div>
 
-    <p><strong>Message:</strong></p>
-    <p>{{ p.message }}</p>
-
-    <p><strong>Freelancer ID:</strong> {{ p.freelancer_id }}</p>
-
-    <button (click)="acceptProposal(p.id)">Accept Proposal</button>
-
+    <p *ngIf="proposals.length === 0" class="no-results">No proposals yet.</p>
   </div>
-
 </div>
