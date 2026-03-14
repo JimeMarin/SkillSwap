@@ -1,0 +1,32 @@
+<p>review-list works!</p>
+
+<div class="review-list-container">
+
+  <h2>User Reviews</h2>
+
+  <!-- Mensagem de erro -->
+  <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+  <!-- Lista de reviews -->
+  <div *ngFor="let r of reviews" class="review-card">
+
+    <p><strong>Rating:</strong> {{ r.rating }}</p>
+
+    <p *ngIf="r.comment">
+      <strong>Comment:</strong> {{ r.comment }}
+    </p>
+
+    <p><strong>Reviewer:</strong> {{ r.reviewer_id }}</p>
+
+    <p><strong>Job:</strong> {{ r.job_id }}</p>
+
+    <hr />
+
+  </div>
+
+  <!-- Caso não tenha reviews -->
+  <p *ngIf="reviews.length === 0 && !errorMessage">
+    No reviews found for this user.
+  </p>
+
+</div>

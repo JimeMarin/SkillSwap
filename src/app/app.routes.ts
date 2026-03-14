@@ -14,6 +14,10 @@ import { JobComplete } from './components/job-complete/job-complete';
 import { ProposalDetailsComponent } from './components/proposal-details/proposal-details';
 import { ProposalMyBidsComponent } from './components/proposal-my-bids/proposal-my-bids';
 
+import { ReviewSend } from './components/review-send/review-send';
+import { ReviewList } from './components/review-list/review-list';
+
+
 
 export const routes: Routes = [
     {path: 'register', component: Register},
@@ -29,6 +33,10 @@ export const routes: Routes = [
     {path: 'jobs/complete', component: JobComplete},
 
     { path: 'proposals/my-bids', component: ProposalMyBidsComponent },
-    { path: 'proposals/:id', component: ProposalDetailsComponent }
+    { path: 'proposals/:id', component: ProposalDetailsComponent },
+
+    { path: 'jobs/:job_id/review/:target_id', component: ReviewSend },
+    { path: 'reviews/user/:user_id', component: ReviewList }
+
 
 ];
