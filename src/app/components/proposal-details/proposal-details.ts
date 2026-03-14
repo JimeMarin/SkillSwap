@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Proposal, ProposalService } from '../../services/proposal.service';
@@ -17,7 +17,8 @@ export class ProposalDetailsComponent {
   constructor(
     private readonly route: ActivatedRoute,
     private readonly router: Router,
-    private readonly proposalService: ProposalService
+    private readonly proposalService: ProposalService,
+    private readonly cdr: ChangeDetectorRef
   ) {
     const id = this.route.snapshot.paramMap.get('id') ?? '';
     this.proposalId = id;
@@ -29,8 +30,10 @@ export class ProposalDetailsComponent {
     this.proposalService.getProposalById(this.proposalId).subscribe({
       next: (res) => {
         this.proposal = res;
+        this.cdr.detectChanges();
       },
       error: () => {
+        this.cdr.detectChanges();
         this.errorMessage = 'Proposal not found.';
         setTimeout(() => {
           this.router.navigate(['/']);

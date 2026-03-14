@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectorRef, Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Proposal, ProposalService } from '../../services/proposal.service';
 
@@ -17,7 +17,8 @@ export class ProposalList {
 
 
   constructor(
-    private readonly proposalService: ProposalService
+    private readonly proposalService: ProposalService,
+    private readonly cdr: ChangeDetectorRef
   ) {
   }
 
@@ -28,9 +29,11 @@ export class ProposalList {
   loadProposals() {
     this.proposalService.getJobProposals(this.jobId).subscribe({
       next: (res) => {
+        this.cdr.detectChanges();
         this.proposals = res;
       },
       error: (err) => {
+        this.cdr.detectChanges();
         this.errorMessage = err.error?.error || 'Error loading proposals.';
       }
     });

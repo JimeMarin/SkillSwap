@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectorRef, Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ProposalService, ProposalCreateResponse } from '../../services/proposal.service';
@@ -21,7 +21,10 @@ export class ProposalSend {
   successMessage = '';
   errorMessage = '';
 
-  constructor(private proposalService: ProposalService) {}
+  constructor(
+    private proposalService: ProposalService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   submit() {
     this.successMessage = '';
@@ -39,9 +42,11 @@ export class ProposalSend {
       this.message
     ).subscribe({
       next: (res: ProposalCreateResponse) => {
+        this.cdr.detectChanges();
         this.successMessage = res.message;
       },
       error: (err) => {
+        this.cdr.detectChanges();
         this.errorMessage = err.error?.error || 'Something went wrong.';
       }
     });
