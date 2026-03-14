@@ -1,0 +1,25 @@
+<p>proposal-my-bids works!</p>
+
+<div class="my-bids-container">
+
+  <h3>My Proposals</h3>
+
+  <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+  <div *ngFor="let p of proposals" class="proposal-card">
+
+    <p><strong>Job ID:</strong> {{ p.job_id }}</p>
+
+    <p><strong>Price:</strong> ${{ p.price }}</p>
+
+    <p><strong>Cover Letter:</strong></p>
+    <p>{{ p.cover_letter }}</p>
+
+    <p><strong>Message:</strong></p>
+    <p>{{ p.message }}</p>
+
+    <p><strong>Status:</strong> {{ p.status }}</p>
+
+  </div>
+
+</div>
