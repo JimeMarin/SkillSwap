@@ -1,59 +1,66 @@
-# SkillSwap
-
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.1.
-
-## Development server
-
-To start a local development server, run:
-
-```bash
-ng serve
+# SkillSwap 🔁
+ 
+A freelancing platform where clients post jobs, freelancers submit proposals, and both can leave reviews after work is completed.
+ 
+---
+ 
+## 🚀 Tech Stack
+ 
+- **Frontend:** Angular 
+- **Styling:** SCSS
+- **Backend API:** REST API hosted on DigitalOcean
+- **Auth:** JWT (JSON Web Tokens)
+ 
+---
+ 
+## ✨ Features
+ 
+- 🔐 User registration and login with JWT authentication
+- 💼 Post, search, update, and complete jobs
+- 📬 Submit and manage proposals
+- ✅ Accept proposals — job moves automatically to `in_progress`
+- ⭐ Leave reviews after job completion
+- 📊 Platform stats (total users, active jobs, total value moved)
+ 
+---
+ 
+## 🔄 App Flow
+ 
 ```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+1. User A registers and logs in
+2. User A posts a job
+3. User B registers and submits a proposal
+4. User A accepts the proposal → job moves to in_progress
+5. Owner or freelancer marks the job as completed
+6. Both participants leave reviews
+7. Ratings update automatically
 ```
+ 
+---
+ 
+## 🛣️ Routes
+ 
+| Path | Component | Auth Required |
+|------|-----------|---------------|
+| `/login` | Login | Guest only |
+| `/register` | Register | Guest only |
+| `/users/me` | User Profile | ✅ |
+| `/jobs/search` | Job Search | ❌ |
+| `/job/new` | Job Create | ✅ |
+| `/jobs/postings` | My Postings | ✅ |
+| `/jobs/:id` | Job Info | ✅ |
+| `/jobs/:id/update` | Job Update | ✅ |
+| `/jobs/:id/complete` | Job Complete | ✅ |
+| `/proposals/my-bids` | My Bids | ✅ |
+| `/proposals/:id` | Proposal Details | ✅ |
+| `/jobs/:job_id/review/:target_id` | Send Review | ✅ |
+| `/reviews/user/:user_id` | User Reviews | ✅ |
+| `/platform/stats` | Platform Stats | ✅ |
+ 
+---
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
 
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+ 
+## 👩‍💻 Developers
+ 
+**Jimena Marín - Luana Tonelli**
