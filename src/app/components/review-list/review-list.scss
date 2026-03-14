@@ -1,0 +1,32 @@
+.review-list-container {
+  max-width: 600px;
+  margin: 20px auto;
+
+  h2 {
+    margin-bottom: 15px;
+    font-size: 22px;
+  }
+
+  .error {
+    color: #b00020;
+    margin-bottom: 10px;
+  }
+
+  .review-card {
+    border: 1px solid #ddd;
+    background: #fafafa;
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+
+    p {
+      margin: 4px 0;
+    }
+
+    hr {
+      margin-top: 10px;
+      border: none;
+      border-top: 1px solid #ddd;
+    }
+  }
+}

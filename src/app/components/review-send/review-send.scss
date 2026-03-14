@@ -1,0 +1,57 @@
+.review-container {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fafafa;
+
+  h2 {
+    margin-bottom: 15px;
+    font-size: 20px;
+  }
+
+  label {
+    display: block;
+    margin-top: 12px;
+    font-weight: 600;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  textarea {
+    min-height: 80px;
+    resize: vertical;
+  }
+
+  button {
+    margin-top: 15px;
+    padding: 10px 15px;
+    background: #007bff;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background: #0056b3;
+  }
+
+  .error {
+    color: #b00020;
+    margin-bottom: 10px;
+  }
+
+  .success {
+    color: #0a7d00;
+    margin-bottom: 10px;
+  }
+}
