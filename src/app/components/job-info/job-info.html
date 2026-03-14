@@ -1,1 +1,45 @@
-<p>job-info works!</p>
+<div class="info-container">
+  <a routerLink="/jobs/search" class="btn-back">← Back</a>
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+  <div *ngIf="job" class="job-card">
+    <div class="job-header">
+      <div>
+        <h2>{{ job.title }}</h2>
+        <span class="job-category">{{ job.category }}</span>
+      </div>
+      <span class="job-status" [ngClass]="job.status">{{ job.status }}</span>
+    </div>
+
+    <p class="job-description">{{ job.description }}</p>
+
+    <div class="job-budget">
+      <span class="label">Budget</span>
+      <span class="value">${{ job.budget }}</span>
+    </div>
+
+    <div class="job-people">
+      <div class="person-card">
+        <span class="label">Owner</span>
+        <p class="name">{{ job.owner.name }}</p>
+        <p class="username">@{{ job.owner.username }}</p>
+        <p class="rating">⭐ {{ job.owner.rating_avg }}</p>
+      </div>
+
+      <div class="person-card" *ngIf="job.freelancer">
+        <span class="label">Freelancer</span>
+        <p class="name">{{ job.freelancer.name }}</p>
+        <p class="username">@{{ job.freelancer.username }}</p>
+        <p class="rating">⭐ {{ job.freelancer.rating_avg }}</p>
+      </div>
+    </div>
+
+    <div class="job-actions">
+      <a *ngIf="isOwner" [routerLink]="['/jobs', job.id, 'update']" class="btn-edit">Edit Job</a>
+      <a *ngIf="(isOwner || isFreelancer) && job.status === 'in_progress'"
+        [routerLink]="['/jobs', job.id, 'complete']" class="btn-complete">
+        Mark as Completed
+      </a>
+    </div>
+  </div>
+</div>

@@ -1,1 +1,43 @@
-<p>job-search works!</p>
+<div class="search-container">
+  <h2>Find Jobs</h2>
+
+  <div class="filters">
+    <label>
+      Category
+      <input [(ngModel)]="category" name="category" type="text" placeholder="e.g. Development" />
+    </label>
+
+    <label>
+      Status
+      <select [(ngModel)]="status" name="status">
+        <option value="open">Open</option>
+        <option value="in_progress">In Progress</option>
+        <option value="completed">Completed</option>
+      </select>
+    </label>
+
+    <label>
+      Min Budget
+      <input [(ngModel)]="min_budget" name="min_budget" type="number" placeholder="e.g. 500" />
+    </label>
+
+    <button (click)="search()">Search</button>
+  </div>
+
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+  <div class="jobs-list">
+    <a *ngFor="let job of jobs" [routerLink]="['/jobs', job.id]" class="job-card">
+      <div class="job-header">
+        <h3>{{ job.title }}</h3>
+        <span class="job-status" [ngClass]="job.status">{{ job.status }}</span>
+      </div>
+      <p class="job-description">{{ job.description }}</p>
+      <div class="job-footer">
+        <span class="job-category">{{ job.category }}</span>
+        <span class="job-budget">${{ job.budget }}</span>
+      </div>
+    </a>
+    <p *ngIf="jobs.length === 0" class="no-results">No jobs found.</p>
+  </div>
+</div>

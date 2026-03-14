@@ -1,1 +1,33 @@
-<p>job-create works!</p>
+<div class="create-container">
+  <div class="header">
+    <h2>New Job</h2>
+  </div>
+
+  <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+
+  <form (ngSubmit)="submit()">
+    <label>
+      Title
+      <input [(ngModel)]="form.title" name="title" type="text" />
+    </label>
+
+    <label>
+      Description
+      <textarea [(ngModel)]="form.description" name="description"></textarea>
+    </label>
+
+    <label>
+      Budget
+      <input [(ngModel)]="form.budget" name="budget" type="number" />
+    </label>
+
+    <label>
+      Category
+      <input [(ngModel)]="form.category" name="category" type="text" />
+    </label>
+
+    <button type="submit" [disabled]="submitting">
+      {{ submitting ? 'Creating...' : 'Post Job' }}
+    </button>
+  </form>
+</div>

@@ -1,1 +1,32 @@
-<p>job-complete works!</p>
+<div class="complete-container">
+  <a routerLink="/jobs/postings" class="btn-back">← Back</a>
+
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+  <div *ngIf="job" class="job-card">
+    <div class="job-header">
+      <div>
+        <h2>{{ job.title }}</h2>
+        <span class="job-category">{{ job.category }}</span>
+      </div>
+      <span class="job-status" [ngClass]="job.status">{{ job.status }}</span>
+    </div>
+
+    <p class="job-description">{{ job.description }}</p>
+
+    <div class="job-budget">
+      <span class="label">Budget</span>
+      <span class="value">${{ job.budget }}</span>
+    </div>
+
+    <div class="job-actions">
+      <button (click)="completeJob()" [disabled]="submitting || job.status !== 'in_progress'" class="btn-complete">
+        {{ submitting ? 'Completing...' : 'Mark as Completed' }}
+      </button>
+      
+      <p *ngIf="job.status !== 'in_progress'" class="status-warning">
+        Only in-progress jobs can be completed.
+      </p>
+    </div>
+  </div>
+</div>
