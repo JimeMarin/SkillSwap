@@ -1,1 +1,27 @@
-<p>users works!</p>
+<div class="page-container">
+
+  <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+
+  <div *ngIf="user" class="profile-card">
+
+    <h2>{{ user.name }}</h2>
+    <p class="username">@{{ user.username }}</p>
+
+    <p class="bio" *ngIf="user.bio">{{ user.bio }}</p>
+
+    <div class="section">
+      <h4>Skills</h4>
+      <div class="skills">
+        <span *ngFor="let s of user.skills" class="skill">{{ s }}</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <h4>Stats</h4>
+      <p>⭐ Rating: {{ user.rating_avg }}</p>
+      <p>✔️ Completed Jobs: {{ user.completed_jobs }}</p>
+    </div>
+
+  </div>
+
+</div>

@@ -16,7 +16,7 @@ export class Register {
   email = '';
   password = '';
   bio = '';
-  skills = [''];
+  skills = '';
   errorMessage = '';
 
   constructor(
@@ -25,8 +25,13 @@ export class Register {
   ) {}
 
   submit() {
+    const skillsArray = this.skills
+      .split(',')
+      .map(s => s.trim())
+      .filter(s => s.length > 0);
+
     this.authService
-      .register(this.name, this.userName, this.email, this.password, this.bio, this.skills)
+      .register(this.name, this.userName, this.email, this.password, this.bio, skillsArray)
       .subscribe({
         next: (res) => {
           console.log(res);
@@ -35,7 +40,7 @@ export class Register {
         error: (err) => {
           console.log(err);
           //alert(err.error.error);
-          this.errorMessage = err.error.error; //err = obj, error = key, error = value
+          this.errorMessage = err.error.error;
         },
       });
   }

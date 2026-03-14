@@ -3,17 +3,18 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 export interface AuthResponse {
-  access_token: string;
+  token: string;
   user: User;
 }
 
 export interface User {
   id: string;
   name: string;
+  username: string;
   email: string;
   bio: string;
-  rating_avg: number;
   skills: string[];
+  rating_avg: number;
 }
 @Injectable({
   providedIn: 'root',
@@ -21,6 +22,7 @@ export interface User {
 export class Auth {
 
   private readonly BASE_URL = "https://stingray-app-wxhhn.ondigitalocean.app";
+
   constructor(private readonly http: HttpClient) {}
      //https://stingray-app-wxhhn.ondigitalocean.app/auth/login
      //https://stingray-app-wxhhn.ondigitalocean.app/auth/register
@@ -32,12 +34,20 @@ export class Auth {
       return this.http.post<AuthResponse>(`${this.BASE_URL}/auth/register`,{name, username, email, password,bio, skills})
     }
 
+    getMe(): Observable<User> {
+      return this.http.get<User>(`${this.BASE_URL}/users/me`,{headers: this.getAuthHeaders()})
+    }
+
     setToken(token: string) {
       localStorage.setItem('token', token);
     }
 
     getToken(): string | null{
       return localStorage.getItem('token');
+    }
+
+    clearToken(){
+      localStorage.removeItem('token');
     }
 
     getAuthHeaders() {
