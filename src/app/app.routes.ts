@@ -11,8 +11,8 @@ import { JobUpdate } from './components/job-update/job-update';
 import { JobPostings } from './components/job-postings/job-postings';
 import { JobComplete } from './components/job-complete/job-complete';
 
-import { ProposalDetails } from './components/proposal-details/proposal-details';
-import { ProposalMyBids } from './components/proposal-my-bids/proposal-my-bids';
+import { ProposalDetailsComponent } from './components/proposal-details/proposal-details';
+import { ProposalMyBidsComponent } from './components/proposal-my-bids/proposal-my-bids';
 
 
 export const routes: Routes = [
@@ -28,7 +28,7 @@ export const routes: Routes = [
     {path: 'jobs/postings', component: JobPostings},
     {path: 'jobs/complete', component: JobComplete},
 
-    { path: 'proposals/my-bids', component: ProposalMyBids },
-    { path: 'proposals/:id', component: ProposalDetails }
+    { path: 'proposals/my-bids', component: ProposalMyBidsComponent },
+    { path: 'proposals/:id', component: ProposalDetailsComponent }
 
 ];

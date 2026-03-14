@@ -9,7 +9,7 @@ import { Proposal, ProposalService } from '../../services/proposal.service';
   templateUrl: './proposal-details.html',
   styleUrl: './proposal-details.scss',
 })
-export class ProposalDetails {
+export class ProposalDetailsComponent {
   proposalId = '';
   proposal: Proposal | null = null;
   errorMessage = '';

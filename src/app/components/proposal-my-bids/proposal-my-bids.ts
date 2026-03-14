@@ -8,7 +8,7 @@ import { Proposal, ProposalService } from '../../services/proposal.service';
   templateUrl: './proposal-my-bids.html',
   styleUrl: './proposal-my-bids.scss',
 })
-export class ProposalMyBids {
+export class ProposalMyBidsComponent {
   proposals: Proposal[] = [];
   errorMessage = '';
 
