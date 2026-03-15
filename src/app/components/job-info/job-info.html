@@ -24,6 +24,8 @@
         <p class="name">{{ job.owner.name }}</p>
         <p class="username">@{{ job.owner.username }}</p>
         <p class="rating">⭐ {{ job.owner.rating_avg }}</p>
+        <a *ngIf="isFreelancer && job.status === 'completed'" [routerLink]="['/jobs', job.id, 'review', job.owner_id]"
+          class="btn-review">Leave Review</a>
       </div>
 
       <div class="person-card" *ngIf="job.freelancer">
@@ -31,24 +33,25 @@
         <p class="name">{{ job.freelancer.name }}</p>
         <p class="username">@{{ job.freelancer.username }}</p>
         <p class="rating">⭐ {{ job.freelancer.rating_avg }}</p>
+        <a *ngIf="isOwner && job.status === 'completed'" [routerLink]="['/jobs', job.id, 'review', job.freelancer_id]"
+          class="btn-review">Leave Review</a>
       </div>
     </div>
 
     <div class="job-actions">
       <a *ngIf="isOwner" [routerLink]="['/jobs', job.id, 'update']" class="btn-edit">Edit Job</a>
-      <a *ngIf="(isOwner || isFreelancer) && job.status === 'in_progress'"
-        [routerLink]="['/jobs', job.id, 'complete']" class="btn-complete">
+      <a *ngIf="(isOwner || isFreelancer) && job.status === 'in_progress'" [routerLink]="['/jobs', job.id, 'complete']"
+        class="btn-complete">
         Mark as Completed
       </a>
 
-      <a *ngIf="job?.status === 'open' && !isOwner && !hasPendingProposal"
-        [routerLink]="['/jobs', job.id, 'propose']" class="btn-propose">
+      <a *ngIf="job?.status === 'open' && !isOwner && !hasPendingProposal" [routerLink]="['/jobs', job.id, 'propose']"
+        class="btn-propose">
         Send Proposal
       </a>
     </div>
-    
-    <app-proposal-list *ngIf="isOwner && job" 
-      [jobId]="job.id">
+
+    <app-proposal-list *ngIf="isOwner && job" [jobId]="job.id">
     </app-proposal-list>
 
   </div>

@@ -47,15 +47,13 @@ export class ProposalSend {
       this.message
     ).subscribe({
       next: (res: ProposalCreateResponse) => {
-        this.cdr.detectChanges();
         this.successMessage = res.message;
-
+        this.cdr.detectChanges();
         this.router.navigate(['/jobs', this.jobId]);
-
       },
       error: (err) => {
-        this.cdr.detectChanges();
         this.errorMessage = err.error?.error || 'Something went wrong.';
+        this.cdr.detectChanges();
       }
     });
   }

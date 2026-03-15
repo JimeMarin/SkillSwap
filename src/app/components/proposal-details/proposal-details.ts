@@ -40,11 +40,11 @@ export class ProposalDetailsComponent {
         this.cdr.detectChanges();
       },
       error: () => {
-        this.cdr.detectChanges();
         this.errorMessage = 'Proposal not found.';
         setTimeout(() => {
           this.router.navigate(['/']);
         }, 1500);
+        this.cdr.detectChanges();
       }
     });
   }

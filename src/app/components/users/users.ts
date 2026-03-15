@@ -1,6 +1,5 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, Router } from '@angular/router';
 import { UsersService, UserProfile } from '../../services/users';
 
 
@@ -18,8 +17,6 @@ export class Users {
   constructor(
     private readonly usersService: UsersService,
     private readonly cdr: ChangeDetectorRef
-    //private readonly route: ActivatedRoute,
-    //private readonly router: Router
   ) {
     this.loadUser();
   }

@@ -21,6 +21,7 @@ import { ReviewSend } from './components/review-send/review-send';
 import { ReviewList } from './components/review-list/review-list';
 
 import { PlatformStatsComponent } from './components/platform-stats/platform-stats';
+import { ProposalList } from './components/proposal-list/proposal-list';
 
 
 export const routes: Routes = [
@@ -35,13 +36,13 @@ export const routes: Routes = [
     {path: 'jobs/:id/update', component: JobUpdate, canActivate: [authGuard]},
     {path: 'jobs/:id/complete', component: JobComplete, canActivate: [authGuard]},
     {path: 'jobs/:id', component: JobInfo, canActivate: [authGuard]},
-    { path: 'jobs/:id/propose', component: ProposalSend, canActivate: [authGuard] },
-            
-    { path: 'proposals/my-bids', component: ProposalMyBidsComponent, canActivate: [authGuard]},
+    {path: 'jobs/:id/propose', component: ProposalSend, canActivate: [authGuard] },
+    
+    {path: 'proposals/my-bids', component: ProposalMyBidsComponent, canActivate: [authGuard]},
 
-    { path: 'jobs/:job_id/review/:target_id', component: ReviewSend, canActivate: [authGuard]},
-    { path: 'reviews/user/:user_id', component: ReviewList, canActivate: [authGuard]},
+    {path: 'jobs/:job_id/review/:target_id', component: ReviewSend, canActivate: [authGuard]},
+    {path: 'reviews/user/:user_id', component: ReviewList, canActivate: [authGuard]},
 
-    { path: 'platform/stats', component: PlatformStatsComponent, canActivate: [authGuard]}
+    {path: 'platform/stats', component: PlatformStatsComponent, canActivate: [authGuard]}
 
 ];

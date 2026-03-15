@@ -32,12 +32,12 @@ export class ProposalList {
   loadProposals() {
     this.proposalService.getJobProposals(this.jobId).subscribe({
       next: (res) => {
-        this.cdr.detectChanges();
         this.proposals = res;
+        this.cdr.detectChanges();
       },
       error: (err) => {
-        this.cdr.detectChanges();
         this.errorMessage = err.error?.error || 'Error loading proposals.';
+        this.cdr.detectChanges();
       }
     });
   }

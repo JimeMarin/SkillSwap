@@ -48,7 +48,7 @@ export class JobInfo {
         this.isFreelancer =
           !!currentUserId &&
           res.freelancer_id?.toString() === currentUserId.toString();
-        
+
         if (this.isOwner) {
           this.proposalService.getJobProposals(id).subscribe((proposals) => {
             this.hasPendingProposal = proposals.some(
@@ -71,12 +71,18 @@ export class JobInfo {
         }
       },
 
-  error: (err) => {
-    this.errorMessage = err.message; 
-    this.cdr.detectChanges();   
-    this.router.navigate(['/jobs/search']);
-    } 
-  });
+      error: (err) => {
+        this.errorMessage = err.message;
+        this.cdr.detectChanges();
+        this.router.navigate(['/jobs/search']);
+      }
+    });
+  }
+
+  get reviewTargetId(): string {
+    if (this.isOwner) return this.job?.freelancer_id ?? '';
+    if (this.isFreelancer) return this.job?.owner_id ?? '';
+    return '';
   }
 }
 

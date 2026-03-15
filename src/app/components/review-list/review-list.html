@@ -1,5 +1,5 @@
 <div class="reviews-container">
-  <h2>User Reviews</h2>
+  <h2>My Reviews</h2>
 
   <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
 
@@ -15,11 +15,6 @@
       </div>
 
       <p *ngIf="r.comment" class="review-comment">{{ r.comment }}</p>
-
-      <div class="review-footer">
-        <span class="review-meta">Job: {{ r.job_id }}</span>
-        <span class="review-meta">By: {{ r.reviewer_id }}</span>
-      </div>
     </div>
 
     <p *ngIf="reviews.length === 0 && !errorMessage" class="no-results">

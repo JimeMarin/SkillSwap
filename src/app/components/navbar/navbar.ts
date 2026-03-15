@@ -15,20 +15,22 @@ export class Navbar {
   isLoggedIn = false;
 
   constructor(
-    private readonly authService: Auth, 
-    private readonly router: Router) 
-    {
+    private readonly authService: Auth,
+    private readonly router: Router) {
     this.updateAuthState();
     this.router.events
-    .pipe(filter(e => e instanceof NavigationEnd))
-    .subscribe(() => this.updateAuthState());
+      .pipe(filter(e => e instanceof NavigationEnd))
+      .subscribe(() => this.updateAuthState());
   }
 
   updateAuthState() {
     this.isLoggedIn = !!this.authService.getToken();
   }
+  get userId(): string {
+    return this.authService.getUserId() ?? '';
+  }
   logout() {
-  this.authService.clearToken();
-  this.router.navigate(['/login']);
+    this.authService.clearToken();
+    this.router.navigate(['/login']);
   }
 }

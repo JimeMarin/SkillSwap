@@ -20,7 +20,9 @@ export class JobSearch {
 
   constructor(
     private readonly jobService: JobServices,
-    private readonly cdr: ChangeDetectorRef) { }
+    private readonly cdr: ChangeDetectorRef) { 
+      this.search();
+    }
 
   search() {
 

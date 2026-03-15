@@ -12,16 +12,14 @@
 
       <p *ngIf="proposal.cover_letter" class="bid-content">{{ proposal.cover_letter }}</p>
       <p *ngIf="proposal.message" class="bid-content">{{ proposal.message }}</p>
-    
 
-    <button 
-        *ngIf="proposal.status === 'pending'"
-        class="btn-delete"
-        (click)="deleteProposal(proposal.id)"
-      >
-        Delete Proposal
-      </button>
+
+      <div class="bid-footer" *ngIf="proposal.status === 'pending'">
+        <button class="btn-delete" (click)="deleteProposal(proposal.id)">
+          Delete Proposal
+        </button>
       </div>
+    </div>
 
 
     <p *ngIf="proposals.length === 0" class="no-results">You have no bids yet.</p>

@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { Review, ReviewService } from '../../services/review.service';
+import { UsersService} from '../../services/users';
 
 @Component({
   selector: 'app-review-list',
@@ -27,12 +28,12 @@ export class ReviewList  {
   loadReviews() {
     this.reviewService.getUserReviews(this.userId).subscribe({
       next: (res) => {
-        this.cdr.detectChanges();
         this.reviews = res;
+        this.cdr.detectChanges();
       },
       error: (err) => {
-        this.cdr.detectChanges();
         this.errorMessage = err.error?.error || 'Error loading reviews.';
+        this.cdr.detectChanges();
       }
     });
   }

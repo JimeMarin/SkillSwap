@@ -26,8 +26,8 @@ export class PlatformStatsComponent {
         this.cdr.detectChanges();
       },
       error: () => {
-        this.cdr.detectChanges();
         this.errorMessage = 'Error loading platform statistics.';
+        this.cdr.detectChanges();
       }
     });
   }

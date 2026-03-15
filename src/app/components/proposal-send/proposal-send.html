@@ -7,12 +7,13 @@
   <form (ngSubmit)="submit()">
     <label>
       Price
-      <input [(ngModel)]="price" name="price" type="number" placeholder="e.g. 500"/>
+      <input [(ngModel)]="price" name="price" type="number" placeholder="e.g. 500" />
     </label>
 
     <label>
       Cover Letter
-      <textarea [(ngModel)]="cover_letter" name="cover_letter" placeholder="Describe why you're the best fit..."></textarea>
+      <textarea [(ngModel)]="cover_letter" name="cover_letter"
+        placeholder="Describe why you're the best fit..."></textarea>
     </label>
 
     <label>
@@ -21,5 +22,6 @@
     </label>
 
     <button type="submit">Submit Proposal</button>
+    
   </form>
 </div>
