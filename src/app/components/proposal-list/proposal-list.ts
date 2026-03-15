@@ -22,9 +22,12 @@ export class ProposalList {
   ) {
   }
 
-  ngOnInit() {
+ ngOnChanges() {
+  if (this.jobId) {
     this.loadProposals();
   }
+}
+
 
   loadProposals() {
     this.proposalService.getJobProposals(this.jobId).subscribe({

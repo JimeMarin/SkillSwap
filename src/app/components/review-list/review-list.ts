@@ -1,16 +1,15 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { Review, ReviewService } from '../../services/review.service';
 
 @Component({
   selector: 'app-review-list',
-  imports: [FormsModule, CommonModule],
+  imports: [CommonModule],
   templateUrl: './review-list.html',
   styleUrl: './review-list.scss',
 })
-export class ReviewList {
+export class ReviewList  {
 
   userId = '';
   reviews: Review[] = [];

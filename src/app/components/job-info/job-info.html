@@ -40,6 +40,16 @@
         [routerLink]="['/jobs', job.id, 'complete']" class="btn-complete">
         Mark as Completed
       </a>
+
+      <a *ngIf="job?.status === 'open' && !isOwner && !hasPendingProposal"
+        [routerLink]="['/jobs', job.id, 'propose']" class="btn-propose">
+        Send Proposal
+      </a>
     </div>
+    
+    <app-proposal-list *ngIf="isOwner && job" 
+      [jobId]="job.id">
+    </app-proposal-list>
+
   </div>
 </div>
