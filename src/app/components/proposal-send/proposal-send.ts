@@ -2,6 +2,8 @@ import { ChangeDetectorRef, Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ProposalService, ProposalCreateResponse } from '../../services/proposal.service';
+import { ActivatedRoute, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-proposal-send',
@@ -11,9 +13,8 @@ import { ProposalService, ProposalCreateResponse } from '../../services/proposal
 })
 export class ProposalSend {
 
-   @Input() jobId!: string;
+  jobId!: string;
 
-   
   price!: number;
   cover_letter: string = '';
   message: string = '';
@@ -23,8 +24,12 @@ export class ProposalSend {
 
   constructor(
     private proposalService: ProposalService,
-    private cdr: ChangeDetectorRef
-  ) {}
+    private cdr: ChangeDetectorRef,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
+    this.jobId = this.route.snapshot.paramMap.get('id') ?? '';
+  }
 
   submit() {
     this.successMessage = '';
@@ -44,6 +49,9 @@ export class ProposalSend {
       next: (res: ProposalCreateResponse) => {
         this.cdr.detectChanges();
         this.successMessage = res.message;
+
+        this.router.navigate(['/jobs', this.jobId]);
+
       },
       error: (err) => {
         this.cdr.detectChanges();

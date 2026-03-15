@@ -26,6 +26,11 @@
 
     <div class="proposal-actions" *ngIf="proposal.status === 'pending'">
       <button (click)="accept()" class="btn-accept">Accept Proposal</button>
+
+      <button *ngIf="isFreelancer && proposal.status === 'pending'" class="btn-delete"(click)="deleteProposal()">
+        Delete Proposal
+      </button>
+
     </div>
   </div>
 </div>
